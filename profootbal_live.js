@@ -3,8 +3,10 @@
 // @namespace   Violentmonkey Scripts
 // @match       https://profootball.ua/static/*
 // @grant       none
-// @version     1.0
-// @author      -
+// @version     1.2
+// @author      raulblanko
+// @updateURL   https://raw.githubusercontent.com/raulblanko/All_Monkeys_Scripts/main/profootbal_live.js
+// @downloadURL https://raw.githubusercontent.com/raulblanko/All_Monkeys_Scripts/main/profootbal_live.js
 // @description 21.08.2023, 17:05:01
 // ==/UserScript==
 //

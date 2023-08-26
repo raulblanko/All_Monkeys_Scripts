@@ -37,16 +37,21 @@ if (document.querySelector('meta').baseURI.startsWith('https://profootball.ua'))
                 var tr_img = trElements[i].querySelector('td>img');
                 if (tr_img) {
                     var img = tr_img.getAttribute('src');
-                    if (img.indexOf("ntv_")) {
+                    bad_channel = false;
+                    if (img.indexOf("ntv_")  !== -1) {
                         trElements[i].style.display = showLive ? "none" : "";
+                        bad_channel = true;
                     }
                 }
-                
+
 
                 var secondTdElement = trElements[i].getElementsByTagName("td")[1];
                 if (firstTdElement && firstTdElement.classList.contains("news_time")) {
                     if (secondTdElement && secondTdElement.textContent.indexOf("LIVE!") === -1) {
                         trElements[i].style.display = showLive ? "none" : "";
+                    }
+                    if (bad_channel) {
+                      trElements[i].style.display = showLive ? "none" : "";
                     }
                 }
             }

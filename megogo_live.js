@@ -17,7 +17,10 @@ function red_live() {
     console.log(element.innerText);
     if (element.innerText.indexOf("Пряма трансляція") !== -1) {
       element.style.color = "red";
-    }
+    };
+    if (element.innerText.indexOf("Прямая трансляция") !== -1) {
+      element.style.color = "red";
+    };
   });
 };
 

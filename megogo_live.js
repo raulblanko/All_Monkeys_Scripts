@@ -4,10 +4,11 @@
 // @match       https://megogo.net/ua/tv/channels/*
 // @grant       none
 // @version     1.0
+// @run-at      document-end
 // @author      raulblanko
 // @updateURL   https://raw.githubusercontent.com/raulblanko/All_Monkeys_Scripts/main/megogo_live.js
 // @downloadURL https://raw.githubusercontent.com/raulblanko/All_Monkeys_Scripts/main/megogo_live.js
-// @description 03.09.2023, 15:55:40
+// @description 04.09.2023, 12:15:00
 // ==/UserScript==
 console.log('Megogo Live. start');
 function red_live() {
@@ -15,6 +16,7 @@ function red_live() {
   console.log(spans);
   spans.forEach(element => {
     console.log(element.innerText);
+    element.style.color = "gray";
     if (element.innerText.indexOf("Пряма трансляція") !== -1) {
       element.style.color = "red";
     };
@@ -32,17 +34,9 @@ button_red.style.left = '5px';
 document.body.appendChild(button_red);
 
 button_red.onclick = function() {
-  red_live();
-    //   spans = document.querySelectorAll('span.sc-iwsKbI');
-    //   console.log(spans);
-    //   spans.forEach(element => {
-    //   console.log(element.innerText);
-    //   if (element.innerText.indexOf("Пряма трансляція") !== -1) {
-    //     element.style.color = "red";
-    //   }
-    // });
+  red_live();    
 };
- //red_live();
+
 window.onload = function() {
   red_live();
 };

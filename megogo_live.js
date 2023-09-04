@@ -3,17 +3,17 @@
 // @namespace   Violentmonkey Scripts
 // @match       https://megogo.net/ua/tv/channels/*
 // @grant       none
-// @version     1.0
+// @version     1.2
 // @run-at      document-end
 // @author      raulblanko
 // @updateURL   https://raw.githubusercontent.com/raulblanko/All_Monkeys_Scripts/main/megogo_live.js
 // @downloadURL https://raw.githubusercontent.com/raulblanko/All_Monkeys_Scripts/main/megogo_live.js
-// @description 04.09.2023, 12:15:00
+// @description 04.09.2023, 12:25:00
 // ==/UserScript==
-console.log('Megogo Live. start');
+console.log('Megogo Live: start');
 function red_live() {
   spans = document.querySelectorAll('span.sc-iwsKbI');
-  console.log(spans);
+  // console.log(spans);
   spans.forEach(element => {
     console.log(element.innerText);
     element.style.color = "gray";
@@ -41,4 +41,4 @@ window.onload = function() {
   red_live();
 };
 
-console.log('Megogo Live. end');
+console.log('Megogo Live: end');

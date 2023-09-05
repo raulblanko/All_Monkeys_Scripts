@@ -3,33 +3,38 @@
 // @namespace   Violentmonkey Scripts
 // @match       https://profootball.ua/static/*
 // @grant       none
-// @version     1.2
+// @version     1.3
 // @author      raulblanko
 // @updateURL   https://raw.githubusercontent.com/raulblanko/All_Monkeys_Scripts/main/profootbal_live.js
 // @downloadURL https://raw.githubusercontent.com/raulblanko/All_Monkeys_Scripts/main/profootbal_live.js
-// @description 21.08.2023, 17:05:01
+// @description 05.09.2023, 14:45:00
 // ==/UserScript==
 //
 // match blank: *://*/*
-if (document.querySelector('meta').baseURI.startsWith('https://profootball.ua')) {
+// document.querySelector('meta').baseURI.startsWith('https://profootball.ua')
+if (true) {
     var elements = document.getElementsByTagName("td");
     var wehavelive = 0;
     for (var i = 0; i < elements.length; i++) {
         if (elements[i].textContent.indexOf("LIVE!") !== -1) {
             elements[i].style.fontWeight = "bold";
             elements[i].style.color = "red";
-          	wehavelive = wehavelive + 1;
+            wehavelive = wehavelive + 1;
         }
-    }
-    if (wehavelive > 0) {
-        var toggleButton = document.createElement("button");
+    };
+    var toggleButton = document.createElement("button");
         toggleButton.textContent = "Show LIVE";
         toggleButton.style.position = "fixed";
         toggleButton.style.top = "10px";
         toggleButton.style.right = "10px";
         document.body.appendChild(toggleButton);
 
+
+    if (wehavelive > -1) {
+
+
         var showLive = true;
+        var bad_channel = false;
         toggleButton.onclick = function() {
             var trElements = document.getElementsByTagName("tr");
             for (var i = 0; i < trElements.length; i++) {

@@ -3,9 +3,9 @@
 // @namespace   Violentmonkey Scripts
 // @match       https://www.flashscore.com/tennis/
 // @grant       none
-// @version     1.0
+// @version     1.3
 // @author      -
-// @description 21.08.2023, 16:49:44
+// @description 09.09.2023, 10:55:03
 // ==/UserScript==
 //
 // match blank: *://*/*
@@ -53,7 +53,7 @@ if (document.querySelector('meta').baseURI.startsWith('https://www.flashscore.co
             const title = header.innerText;
             const sptitle = spans[i].title;
 
-            if (!title.startsWith('WTA - SINGLES') && !title.startsWith('WTA - DOUBLES') && !title.startsWith('Mixed Doubles')) {
+            if (!title.startsWith('WTA - SINGLES') && !title.startsWith('WTA - DOUBLES') && !title.startsWith('MIXED DOUBLES') && !title.startsWith('GIRLS') && !title.startsWith('CHALLENGER WOMEN') && !title.startsWith('ITF WOMEN')) {
                 if (!sptitle.startsWith('Display ')) {
                   	spans[i].click();
 

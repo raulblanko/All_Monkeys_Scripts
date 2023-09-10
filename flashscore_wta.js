@@ -3,9 +3,12 @@
 // @namespace   Violentmonkey Scripts
 // @match       https://www.flashscore.com/tennis/
 // @grant       none
-// @version     1.3
-// @author      -
-// @description 09.09.2023, 10:55:03
+// @version     1.35
+// @run-at      document-end
+// @author      raulblanko
+// @updateURL   https://raw.githubusercontent.com/raulblanko/All_Monkeys_Scripts/main/flashscore_wta.js
+// @downloadURL https://raw.githubusercontent.com/raulblanko/All_Monkeys_Scripts/main/flashscore_wta.js
+// @description 10.09.2023, 13:07:08
 // ==/UserScript==
 //
 // match blank: *://*/*

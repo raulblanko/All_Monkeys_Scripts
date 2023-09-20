@@ -4,7 +4,7 @@
 
 The **Violentmonkey UserScript** will hide all tennis events on [**Flashscore**](https://www.flashscore.com/tennis/) except for Women singles, doubles, and mixed doubles events. It will also highlight all players from your favorites list that plays in these events.
 
-To use the script, simply install the [**Violentmonkey extension**](https://violentmonkey.github.io/) for your browser and then create a new script with the code you provided. Once the script is installed and enabled, it will automatically run each time you visit the [Flashscore tennis page.](https://www.flashscore.com/tennis/)
+To use the script, simply install the [**Violentmonkey extension**](https://violentmonkey.github.io/) for your browser and then create a new [script with from this link](https://raw.githubusercontent.com/raulblanko/All_Monkeys_Scripts/main/flashscore_wta.js). Once the script is installed and enabled, it will automatically run each time you visit the [Flashscore tennis page.](https://www.flashscore.com/tennis/)
 
 Here is a breakdown of what the script does:  
 

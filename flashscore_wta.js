@@ -1,21 +1,21 @@
 // ==UserScript==
 // @name        flashscore WTA only
 // @namespace   Violentmonkey Scripts
-// @match       https://www.flashscore.com/tennis/
+// @match       https://www.flashscore.com/tennis/*
 // @grant       none
-// @version     1.35
+// @version     1.4
 // @run-at      document-end
 // @author      raulblanko
 // @updateURL   https://raw.githubusercontent.com/raulblanko/All_Monkeys_Scripts/main/flashscore_wta.js
 // @downloadURL https://raw.githubusercontent.com/raulblanko/All_Monkeys_Scripts/main/flashscore_wta.js
-// @description 10.09.2023, 13:07:08
+// @description 20.09.2023, 12:00:01
 // ==/UserScript==
 //
 // match blank: *://*/*
 // 
 if (document.querySelector('meta').baseURI.startsWith('https://www.flashscore.com/tennis')) {
   	var button_hide = document.createElement('button');
-  	button_hide.textContent = 'Hide all except WTA';
+  	button_hide.textContent = 'Hide all except Women';
     button_hide.style.position = 'fixed';
     button_hide.style.top = '30px';
   	button_hide.style.right = '30px';
@@ -37,8 +37,8 @@ if (document.querySelector('meta').baseURI.startsWith('https://www.flashscore.co
       //  svgElement.appendChild(useElement);
 
         for (let i = 0; i < div_players.length; i++) {
-            player = div_players[i];
-            name = player.innerText;
+            var player = div_players[i];
+            var name = player.innerText;
             console.log(name);
             if (fav_names.indexOf(name) != -1) {
                 console.log(fav_names.indexOf(name));

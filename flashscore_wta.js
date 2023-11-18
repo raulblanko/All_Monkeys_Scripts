@@ -2,6 +2,7 @@
 // @name        flashscore WTA only
 // @namespace   Violentmonkey Scripts
 // @match       https://www.flashscore.com/tennis/*
+// @match       https://www.flashscore.com/winter-sports/*
 // @grant       none
 // @version     1.4
 // @run-at      document-end
@@ -12,22 +13,50 @@
 // ==/UserScript==
 //
 // match blank: *://*/*
-// 
-if (document.querySelector('meta').baseURI.startsWith('https://www.flashscore.com/tennis')) {
-  	var button_hide = document.createElement('button');
-  	button_hide.textContent = 'Hide all except Women';
+//
+console.log('flashscore', document.querySelector('meta').baseURI);
+if (document.querySelector('meta').baseURI.startsWith('https://www.flashscore.com/tennis')  || document.querySelector('meta').baseURI.startsWith('https://www.flashscore.com/winter-sports')) {
+    var button_hide = document.createElement('button');
+    button_hide.textContent = 'Hide all except Women';
+    if (document.querySelector('meta').baseURI.startsWith('https://www.flashscore.com/winter-sports')) {
+      button_hide.textContent = 'Highlight Favorites';
+    }
     button_hide.style.position = 'fixed';
     button_hide.style.top = '30px';
-  	button_hide.style.right = '30px';
-  	document.body.appendChild(button_hide);
-  	// button_hide.addEventListener('click', function()
-  	button_hide.onclick = function() {
-    	var div_players = document.querySelectorAll('div.event__participant');
+    button_hide.style.right = '30px';
+    document.body.appendChild(button_hide);
+    // button_hide.addEventListener('click', function()
+    var divs_all = document.querySelectorAll('.sportName--noDuel div');
+    console.log('divs_all', divs_all);
+
+    button_hide.onclick = function() {
+        console.log('sportName--noDuel  div', document.querySelectorAll('.sportName--noDuel div'));
+        var divs_all_f = document.querySelectorAll('.sportName--noDuel div');
+        console.log('divs_all_f', divs_all_f);
+
+
+          var div_players = document.querySelectorAll('div.event__participant');
+        if (!div_players) {
+          var div_players = document.querySelectorAll('div.event__participantName');
+        };
         var div_favs = document.querySelectorAll('div#my-teams-list span.leftMenu__text');
         var fav_names = [];
         for (let j = 0; j < div_favs.length; j++) {
             fav_names.push(div_favs[j].innerText);
         }
+        if (document.querySelector('meta').baseURI.startsWith('https://www.flashscore.com/winter-sports')) {
+          for (let i = 0; i < divs_all_f.length; i++) {
+            var player = divs_all_f[i];
+            var name = player.innerText;
+            console.log(name);
+            if (fav_names.indexOf(name) != -1) {
+                console.log(fav_names.indexOf(name));
+                // player.appendChild(svgElement.cloneNode(true));
+                player.style.border = '1px dotted blue';
+            }
+        }
+        }
+
         //console.log(fav_names);
        // svgElement = document.createElementNS("http://www.w3.org/2000/svg", "svg");
        // svgElement.classList.add("new-star");
@@ -36,6 +65,7 @@ if (document.querySelector('meta').baseURI.startsWith('https://www.flashscore.co
        // useElement.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "/res/_fs/image/13_symbols/action.svg#star");
       //  svgElement.appendChild(useElement);
 
+        console.log('div_players', div_players);
         for (let i = 0; i < div_players.length; i++) {
             var player = div_players[i];
             var name = player.innerText;
@@ -43,7 +73,7 @@ if (document.querySelector('meta').baseURI.startsWith('https://www.flashscore.co
             if (fav_names.indexOf(name) != -1) {
                 console.log(fav_names.indexOf(name));
                 // player.appendChild(svgElement.cloneNode(true));
-              	player.style.border = '1px dotted blue';
+                player.style.border = '1px dotted blue';
             }
         }
         // Get the headers and spans lists.
@@ -56,13 +86,13 @@ if (document.querySelector('meta').baseURI.startsWith('https://www.flashscore.co
             const title = header.innerText;
             const sptitle = spans[i].title;
 
-            if (!title.startsWith('WTA - SINGLES') && !title.startsWith('WTA - DOUBLES') && !title.startsWith('MIXED DOUBLES') && !title.startsWith('GIRLS') && !title.startsWith('CHALLENGER WOMEN') && !title.startsWith('ITF WOMEN')) {
+            if (!title.startsWith('WTA - SINGLES') && !title.startsWith('WTA - DOUBLES') && !title.startsWith('MIXED DOUBLES') && !title.startsWith('GIRLS') && !title.startsWith('CHALLENGER WOMEN') && !title.startsWith('ITF WOMEN')  && title.indexOf('Slalom - Women')===-1) {
                 if (!sptitle.startsWith('Display ')) {
-                  	spans[i].click();
+                    spans[i].click();
 
                 }
-              	header.style.display = "none";
+                header.style.display = "none";
             }
         }
-	}
+    }
 }

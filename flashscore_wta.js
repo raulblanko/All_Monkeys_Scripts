@@ -3,6 +3,7 @@
 // @namespace   Violentmonkey Scripts
 // @match       https://www.flashscore.com/tennis/*
 // @match       https://www.flashscore.com/winter-sports/*
+// @match       https://www.livescore.in/*
 // @grant       none
 // @version     1.4
 // @run-at      document-end
@@ -15,11 +16,11 @@
 // match blank: *://*/*
 //
 console.log('flashscore', document.querySelector('meta').baseURI);
-if (document.querySelector('meta').baseURI.startsWith('https://www.flashscore.com/tennis')  || document.querySelector('meta').baseURI.startsWith('https://www.flashscore.com/winter-sports')) {
+if (document.querySelector('meta').baseURI.startsWith('https://www.flashscore.com/tennis')  || document.querySelector('meta').baseURI.startsWith('https://www.flashscore.com/winter-sports')  || document.querySelector('meta').baseURI.startsWith('https://www.livescore.in') ) {
     var button_hide = document.createElement('button');
-    button_hide.textContent = 'Hide all except Women';
-    if (document.querySelector('meta').baseURI.startsWith('https://www.flashscore.com/winter-sports')) {
-      button_hide.textContent = 'Highlight Favorites';
+    button_hide.textContent = 'Highlight Favorites'; //
+    if (document.querySelector('meta').baseURI.startsWith('https://www.flashscore.com/tennis')) {
+      button_hide.textContent = 'Hide all except Women';
     }
     button_hide.style.position = 'fixed';
     button_hide.style.top = '30px';
@@ -44,7 +45,7 @@ if (document.querySelector('meta').baseURI.startsWith('https://www.flashscore.co
         for (let j = 0; j < div_favs.length; j++) {
             fav_names.push(div_favs[j].innerText);
         }
-        if (document.querySelector('meta').baseURI.startsWith('https://www.flashscore.com/winter-sports')) {
+        if (document.querySelector('meta').baseURI.startsWith('https://www.flashscore.com/winter-sports') || document.querySelector('meta').baseURI.startsWith('https://www.livescore.in')) {
           for (let i = 0; i < divs_all_f.length; i++) {
             var player = divs_all_f[i];
             var name = player.innerText;

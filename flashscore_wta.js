@@ -55,6 +55,10 @@ if (document.querySelector('meta').baseURI.startsWith('https://www.flashscore.co
                 // player.appendChild(svgElement.cloneNode(true));
                 player.style.border = '1px dotted blue';
             }
+          for (d of divs_all_f) {
+            if (d.className.indexOf('event__header')===0 && d.innerText.indexOf(' - Men ')>=0) {
+              d.parentElement.style.display = 'none';
+            }
         }
         }
 

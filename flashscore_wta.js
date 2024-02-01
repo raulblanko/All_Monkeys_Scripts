@@ -83,20 +83,20 @@ if (document.querySelector('meta').baseURI.startsWith('https://www.flashscore.co
             }
         }
         // Get the headers and spans lists.
-        const headers = document.querySelectorAll('div.event__header');
-        const spans = document.querySelectorAll('span.event__expanderBlock');
+        const headers = document.querySelectorAll('div.wclLeagueHeader'); // 'div.event__header' - old design
+        //const spans = document.querySelectorAll('span.event__expanderBlock');
 
         // Iterate over the spans list and collapse all events that are not WTA.
-        for (let i = 0; i < spans.length; i++) {
+        for (let i = 0; i < headers.length; i++) {
             const header = headers[i];
             const title = header.innerText;
-            const sptitle = spans[i].title;
+            //const sptitle = spans[i].title;
 
-            if (!title.startsWith('WTA - SINGLES') && !title.startsWith('WTA - DOUBLES') && !title.startsWith('MIXED DOUBLES') && !title.startsWith('GIRLS') && !title.startsWith('CHALLENGER WOMEN') && !title.startsWith('ITF WOMEN')  && title.indexOf('Slalom - Women')===-1) {
-                if (!sptitle.startsWith('Display ')) {
-                    spans[i].click();
+            if (!title.startsWith('WTA') && !title.startsWith('MIXED DOUBLES') && !title.startsWith('GIRLS') && !title.startsWith('CHALLENGER WOMEN') && !title.startsWith('ITF WOMEN')  && title.indexOf('Slalom - Women')===-1) {
+                //if (!sptitle.startsWith('Display ')) {
+                  //    spans[i].click();
 
-                }
+                //}
                 header.style.display = "none";
             }
         }

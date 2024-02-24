@@ -49,16 +49,17 @@ if (document.querySelector('meta').baseURI.startsWith('https://www.flashscore.co
           for (let i = 0; i < divs_all_f.length; i++) {
             var player = divs_all_f[i];
             var name = player.innerText;
-            console.log(name);
+            //console.log(name);
             if (fav_names.indexOf(name) != -1) {
                 console.log(fav_names.indexOf(name));
                 // player.appendChild(svgElement.cloneNode(true));
                 player.style.border = '1px dotted blue';
             }
-          for (d of divs_all_f) {
-            if (d.className.indexOf('event__header')===0 && d.innerText.indexOf(' - Men ')>=0) {
-              d.parentElement.style.display = 'none';
-                }
+            for (d of divs_all_f) {
+              // event__title  was event__header
+              if (d.className.indexOf('wclLeagueHeader')===0 && d.innerText.indexOf(' - Men ')>=0) {
+                d.parentElement.style.display = 'none';
+            }
             }
         }
         }
@@ -71,38 +72,44 @@ if (document.querySelector('meta').baseURI.startsWith('https://www.flashscore.co
        // useElement.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "/res/_fs/image/13_symbols/action.svg#star");
       //  svgElement.appendChild(useElement);
 
-        console.log('div_players', div_players);
+        console.log('tennis part div_players', div_players);
         for (let i = 0; i < div_players.length; i++) {
             var player = div_players[i];
             var name = player.innerText;
-            console.log(name);
+            //console.log(name);
             if (fav_names.indexOf(name) != -1) {
-                console.log(fav_names.indexOf(name));
+                //console.log(fav_names.indexOf(name));
                 // player.appendChild(svgElement.cloneNode(true));
                 player.style.border = '1px dotted blue';
             }
         }
         // Get the headers and spans lists.
-        const headers = document.querySelectorAll('div.wclLeagueHeader'); // 'div.event__header' - old design
+        var headers = document.querySelectorAll('div.wclLeagueHeader'); // 'div.event__header' - old design
         //const spans = document.querySelectorAll('span.event__expanderBlock');
-        const spans = document.querySelectorAll('span._icon_34mey_15');
+        var spans = document.querySelectorAll('span._icon_18a95_15'); // old class was _icon_34mey_15
         // Iterate over the spans list and collapse all events that are not WTA.
-        for (let i = 0; i < headers.length; i++) {
+        console.log('tennis headers', headers);
+        console.log('tennis spans', spans);
+        if (headers.length>0 && spans.length > 0) {for (let i = 0; i < headers.length; i++) {
             const header = headers[i];
             const title = header.innerText;
             //const sptitle = spans[i].title;
             // data-testid="wcl-icon-action-navigation-up"
-            const span_btn = spans[i].querySelector('svg').getAttribute('data-testid');
-            if (!title.startsWith('WTA') && !title.startsWith('MIXED DOUBLES') && !title.startsWith('GIRLS') && !title.startsWith('CHALLENGER WOMEN') && !title.startsWith('ITF WOMEN')  && title.indexOf('Slalom - Women')===-1) {
+          var span = spans[i];
+          //if (spans[i]) {
+          var span_btn = span.querySelector('svg').getAttribute('data-testid');
+            //}
+          //console.log(span, span_btn);
+          if (!title.startsWith('WTA') && !title.startsWith('MIXED DOUBLES') && !title.startsWith('GIRLS') && !title.startsWith('CHALLENGER WOMEN') && !title.startsWith('ITF WOMEN')  && title.indexOf('Slalom - Women')===-1) {
                 //if (!sptitle.startsWith('Display ')) {
                   //    spans[i].click();
                 //}
                 if (span_btn==='wcl-icon-action-navigation-up') {
-                  spans[i].click();
-                }                
-                
+                  span.click();
+                }
+
                 header.style.display = "none";
             }
-        }
+        }}
     }
 }

@@ -86,7 +86,9 @@ if (document.querySelector('meta').baseURI.startsWith('https://www.flashscore.co
         // Get the headers and spans lists.
         var headers = document.querySelectorAll('div.wclLeagueHeader'); // 'div.event__header' - old design
         //const spans = document.querySelectorAll('span.event__expanderBlock');
-        var spans = document.querySelectorAll('span._icon_18a95_15'); // old class was _icon_34mey_15
+        // broad spans from headers only for any icon class
+        var spans = document.querySelectorAll('div.wclLeagueHeader span[class^="_icon_"]'); 
+      // they change icon class often. last was 'span._icon_bydh9_20'; //    old class was _icon_34mey_15, _icon_18a95_15
         // Iterate over the spans list and collapse all events that are not WTA.
         console.log('tennis headers', headers);
         console.log('tennis spans', spans);

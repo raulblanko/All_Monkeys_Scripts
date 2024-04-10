@@ -1,6 +1,13 @@
 # All_Monkeys_Scripts
 
+## livetv_women.js
+
+[todo] to write the explanation
+
 ## flashscore_wta.js
+
+#### [UPD] Works for Winter sports as well.
+[todo] to finish the explanation
 
 The **Violentmonkey UserScript** will hide all tennis events on [**Flashscore**](https://www.flashscore.com/tennis/) except for Women singles, doubles, and mixed doubles events. It will also highlight all players from your favorites list that plays in these events.
 

@@ -23,6 +23,13 @@ function red_live() {
     if (element.innerText.indexOf("Прямая трансляция") !== -1) {
       element.style.color = "red";
     };
+    if (element.innerText.indexOf("наживо") !== -1) {
+      element.style.color = "red";
+    };
+    if (element.innerText.indexOf("Наживо") !== -1) {
+      element.style.color = "red";
+    };
+
   });
 };
 

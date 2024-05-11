@@ -31,13 +31,21 @@ if (document.querySelector('meta').baseURI.includes('allupcomingsports')) {
      'Hesse', 'Hourigan', 'Hruncakova', 'Hui', 'Jeanjean', 'Juvan', 'Kalinina', 'Kawa', 'Kerber', 'Kichenok', 'Kostyuk', 'Kotliar', 'Kubka',
      'Martic', 'Martincova', 'Montgomery', 'Moratelli', 'Navarro', 'Naya', 'Ngounoue', 'Niemeier', 'Oliynykova', 'Osorio', 'Pegula', 'Pigossi',
      'Sakkari', 'Snigur', 'Sonmez', 'Starodubtseva', 'Stefani', 'Stefanini', 'Stevanovic', 'Stollar', 'Strakhova', 'Svitolina', 'Swiatek', 'Szostak',
-     'Todoni', 'Tomova', 'Trevisan', 'Tsurenko', 'Udvardy', 'Vickery', 'Volodko', 'Volynets', 'Yastremska', 'Zavatska', 'Zimmermann'];
+     'Todoni', 'Tomova', 'Trevisan', 'Tsurenko', 'Udvardy', 'Vickery', 'Volodko', 'Volynets', 'Yastremska', 'Zavatska', 'Zimmermann', 
+     // added 
+    'Sramkova', 
+    'Kasatkina', // supported Ukraine
+    'Leicester', 'Barcelona (W)', 'PSG (W)',
+    'Alanta (W)', 'Balta (W)', 'Conegliano (W)', 'Prometey (W)',
+    'Scandicci (W)', 'Vero Volley (W)',
+    'Ukraine (W)', 'Ukraine'
+    ];
 
-    substrings = ["(ATP ", "(ATP."];
+    removeSubstrings = ["(ATP ", "(ATP.", "Russia"];
     td_cells = document.querySelectorAll('tr > td[colspan="2"]');
 
     removeCells = Array.from(td_cells).filter(cell =>
-      substrings.some(substring => cell.innerText.includes(substring))
+      removeSubstrings.some(substring => cell.innerText.includes(substring))
     );
     removeCells.forEach(cell => {
       cell.style.display = 'none'; // Hides the cell

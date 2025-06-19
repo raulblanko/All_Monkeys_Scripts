@@ -3,15 +3,18 @@
 // @namespace   Violentmonkey Scripts
 // @match       *://livetv*.*/*
 // @grant       none
-// @version     1.0
+// @version     1.3
 // @run-at      document-end
 // @author      raulblanko
 // @updateURL   https://raw.githubusercontent.com/raulblanko/All_Monkeys_Scripts/main/livetv_women.js
 // @downloadURL https://raw.githubusercontent.com/raulblanko/All_Monkeys_Scripts/main/livetv_women.js
-// @description 10.04.2024, 14:02:00
+// @description 19.06.2025, 10:48:00
 // ==/UserScript==
 //
 // match blank: *://*/*
+title_name = document.querySelector('span.sltitle').innerText;
+console.log('title_name:', title_name);
+document.title = title_name + ' LiveTV';
 
 console.log('LiveTV monkey script', document.querySelector('meta').baseURI);
 
@@ -25,23 +28,19 @@ if (document.querySelector('meta').baseURI.includes('allupcomingsports')) {
   document.body.appendChild(button_hide);
 
   button_hide.onclick = function() {
-    //favorites = ['Sakkari', 'Trevisan', 'Topalova'];
-    favorites = ['Alves', 'Aney', 'Appleton', 'Arango', 'Badosa', 'Baindl', 'Bara', 'Birrell', 'Bogdan', 'Bouchard', 'Boulter', 'Bouzas', 'Burrage',
-     'Chirico', 'Cirstea', 'Cocciaretto', 'Collins', 'Dodin', 'Falkowska', 'Fett', 'Frech', 'Fruhvirtova', 'Garcia', 'Giorgi', 'Guarachi',
-     'Hesse', 'Hourigan', 'Hruncakova', 'Hui', 'Jeanjean', 'Juvan', 'Kalinina', 'Kawa', 'Kerber', 'Kichenok', 'Kostyuk', 'Kotliar', 'Kubka',
-     'Martic', 'Martincova', 'Montgomery', 'Moratelli', 'Navarro', 'Naya', 'Ngounoue', 'Niemeier', 'Oliynykova', 'Osorio', 'Pegula', 'Pigossi',
-     'Sakkari', 'Snigur', 'Sonmez', 'Starodubtseva', 'Stefani', 'Stefanini', 'Stevanovic', 'Stollar', 'Strakhova', 'Svitolina', 'Swiatek', 'Szostak',
-     'Todoni', 'Tomova', 'Trevisan', 'Tsurenko', 'Udvardy', 'Vickery', 'Volodko', 'Volynets', 'Yastremska', 'Zavatska', 'Zimmermann', 
-     // added 
-    'Sramkova', 
-    'Kasatkina', // supported Ukraine
+    
+    favorites = ['Aney', 'Appleton', 'Arango', 'Avanesyan', 'Badosa', 'Birrell', 'Bogdan', 'Bouchard', 'Bouzas', 'Burrage', 'Chirico', 'Cirstea', 'Collins', 'Falkowska', 'Fett', 'Frech', 'Garcia', 'Giorgi', 'Haverlag', 'Hesse', 'Hourigan', 'Iliev', 'Jacquemot', 'Janicijevic', 'Juvan', 'Kasatkina', 'Kawa', 'Kerber', 'Kessler', 'Kostyuk', 'Krawczyk', 'Kubka', 'Martic', 'Martincova', 'Montgomery', 'Moratelli', 'Navarro', 'Naya', 'Osorio', 'Rosatello', 'Sakkari', 'Sonmez', 'Sramkova', 'Stefani', 'Stevanovic', 'Stollar', 'Svitolina', 'Swiatek', 'Szostak', 'Tomljanovic', 'Trevisan', 'Volynets', 'Waltert', 'Yastremska', 'Zavatska', 'Zimmermann',
+    
     'Leicester', 'Barcelona (W)', 'PSG (W)',
     'Alanta (W)', 'Balta (W)', 'Conegliano (W)', 'Prometey (W)',
     'Scandicci (W)', 'Vero Volley (W)',
-    'Ukraine (W)', 'Ukraine'
-    ];
+    'Ukraine (W)', 'Ukraine']; // ' (W)'
+    if (title_name!=='Tennis') {
+      favorites.push(' (W)')
+    }
+    
+    removeSubstrings = ["(ATP ", "(ATP.", "Russia", " Men. Doubles)", " Men)"];
 
-    removeSubstrings = ["(ATP ", "(ATP.", "Russia"];
     td_cells = document.querySelectorAll('tr > td[colspan="2"]');
 
     removeCells = Array.from(td_cells).filter(cell =>
